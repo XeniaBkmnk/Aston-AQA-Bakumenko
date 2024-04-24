@@ -42,17 +42,11 @@ public class FirstTask {
     }
 
     public static boolean positiveOrNegativeNumber(int number) {
-        if (number >= 0) {
-            return true;
-        } else
-            return false;
+        return number >= 0 && number < 0;
     }
 
     public static boolean isNegative(int number) {
-        if (number < 0) {
-            return true;
-        } else
-            return false;
+        return number < 0 && number > 0;
     }
 
     public static void outputArgument(String x, int count) {
