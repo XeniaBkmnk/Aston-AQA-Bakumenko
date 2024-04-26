@@ -1,4 +1,4 @@
-package by.aston.bakumenko;
+package by.aston.bakumenko.firstTask;
 
 public class FirstTask {
     public static void printThreeWords() {

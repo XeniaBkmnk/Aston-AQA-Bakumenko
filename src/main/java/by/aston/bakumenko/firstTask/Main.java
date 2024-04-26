@@ -1,4 +1,6 @@
-package by.aston.bakumenko;
+package by.aston.bakumenko.firstTask;
+
+import by.aston.bakumenko.firstTask.FirstTask;
 
 public class Main {
     public static void main(String[] args) {
