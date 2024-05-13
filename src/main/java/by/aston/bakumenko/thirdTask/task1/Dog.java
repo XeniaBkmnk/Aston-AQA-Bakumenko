@@ -1,4 +1,4 @@
-package by.aston.bakumenko.thirdTask;
+package by.aston.bakumenko.thirdTask.task1;
 
 public class Dog extends Animal {
     private static int dogCount = 0;
