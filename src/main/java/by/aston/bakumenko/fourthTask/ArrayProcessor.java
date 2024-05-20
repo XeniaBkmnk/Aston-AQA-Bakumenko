@@ -17,7 +17,6 @@ public class ArrayProcessor {
         }
         int sum = 0;
         List<String> errorMessages = new ArrayList<>();
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 try {
