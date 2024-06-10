@@ -26,7 +26,6 @@ public class WordCounter {
         System.out.println("Количество повторений каждого слова:");
         for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
-
         }
     }
 }
