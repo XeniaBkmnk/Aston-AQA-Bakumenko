@@ -1,6 +1,6 @@
-package by.aston.bakumenko;
+package by.aston.bakumenko.seventhTask;
 
-public class Factorial {
+public class FactorialJunit {
     public static long factorial(long n) {
         if (n < 0) {
             throw new IllegalArgumentException("Число должно быть положительным!");
