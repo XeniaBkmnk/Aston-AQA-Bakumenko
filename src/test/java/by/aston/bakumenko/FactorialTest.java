@@ -2,6 +2,7 @@ package by.aston.bakumenko;
 
 import by.aston.bakumenko.seventhTask.Factorial;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
