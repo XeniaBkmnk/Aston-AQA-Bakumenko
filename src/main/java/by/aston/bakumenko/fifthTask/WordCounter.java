@@ -4,23 +4,23 @@ import java.util.*;
 
 public class WordCounter {
     public static void main(String[] args) {
-        String[] words = {"cat", "dog", "elephant", "boa", "butterfly", "dog", "spider", "boa", "cat", "dolphin", "monkey", "dog", "bee", "cat", "fish", "bear", "cat"};
+        String[] arrayOfWords = {"cat", "dog", "elephant", "boa", "butterfly", "dog", "spider", "boa", "cat", "dolphin", "monkey", "dog", "bee", "cat", "fish", "bear", "cat"};
+        List<String> unique = new ArrayList<>();
         Map<String, Integer> wordCounts = new HashMap<>();
-        for (String word : words) {
-            if (wordCounts.containsKey(word)) {
-                wordCounts.put(word, wordCounts.get(word) + 1);
-            } else {
-                wordCounts.put(word, 1);
+        for (int i = 0; i < arrayOfWords.length; i++) {
+            int count = 0;
+            for (int j = 0; j < arrayOfWords.length; j++) {
+                if (arrayOfWords[i].equals(arrayOfWords[j]) && i != j) {
+                    count++;
+                }
             }
-        }
-        Set<String> uniqueWords = new HashSet<>();
-        for (Map.Entry<String, Integer> entry : wordCounts.entrySet()) {
-            if (entry.getValue() == 1) {
-                uniqueWords.add(entry.getKey());
+            wordCounts.put(arrayOfWords[i], count);
+            if (count == 0) {
+                unique.add(arrayOfWords[i]);
             }
         }
         System.out.println("Уникальные слова:");
-        for (String word : uniqueWords) {
+        for (String word : unique) {
             System.out.println(word);
         }
         System.out.println("Количество повторений каждого слова:");
