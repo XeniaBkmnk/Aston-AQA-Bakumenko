@@ -20,7 +20,7 @@ public class WebDriverSingleton {
     public static void quitDriver() {
         if (driver != null) {
             driver.quit();
-            driver = null;
         }
+        driver = null;
     }
 }
