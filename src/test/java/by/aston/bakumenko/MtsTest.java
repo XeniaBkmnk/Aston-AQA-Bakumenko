@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 
-
 public class MtsTest extends BaseTest {
     MtsPage mtsPage = new MtsPage();
     private static final Logger LOGGER = LogManager.getLogger();
