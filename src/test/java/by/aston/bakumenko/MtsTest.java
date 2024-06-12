@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 
-import static org.testng.Assert.assertTrue;
 
 public class MtsTest extends BaseTest {
     MtsPage mtsPage = new MtsPage();
