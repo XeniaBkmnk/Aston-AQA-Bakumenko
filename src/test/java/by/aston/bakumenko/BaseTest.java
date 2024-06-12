@@ -1,6 +1,6 @@
 package by.aston.bakumenko;
 
-import org.junit.jupiter.api.AfterEach;
+import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +12,7 @@ public class BaseTest {
         driver = WebDriverSingleton.getDriver();
     }
 
-    @AfterEach
+    @After
     public void tearDown() throws InterruptedException {
         Thread.sleep(4000);
         if (WebDriverSingleton.getDriver() != null) {
