@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import static by.aston.bakumenko.MtsXpath.*;
 
@@ -64,48 +66,23 @@ public class MtsPage {
         return dropdown.getText();
     }
 
-    public boolean checkLogoImagerVisaCard() {
-        try {
-            WebElement visaCardLogo = driver.findElement(By.xpath(LOGO_IMAGE_VISA_CARD_LOCATOR));
-            return visaCardLogo != null;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
+    public List<Boolean> searchLogoImages() {
+        List<String> locators = new ArrayList<>();
+        locators.add(LOGO_IMAGE_VISA_CARD_LOCATOR);
+        locators.add(LOGO_IMAGE_VISA_VERIFIED_BY_CARD_LOCATOR);
+        locators.add(LOGO_IMAGE_MASTER_CARD_SECURE_CODE_LOCATOR);
+        locators.add(LOGO_IMAGE_BEL_CARD_LOCATOR);
+        locators.add(LOGO_IMAGE_MASTER_CARD_LOCATOR);
 
-    public boolean checkLogoImagerVisaVerifiedByCard() {
-        try {
-            WebElement visaCardVerifiedByLogo = driver.findElement(By.xpath(LOGO_IMAGE_VISA_VERIFIED_BY_CARD_LOCATOR));
-            return visaCardVerifiedByLogo != null;
-        } catch (NoSuchElementException e) {
-            return false;
+        List<Boolean> results = new ArrayList<>();
+        for (String locator : locators) {
+            try {
+                WebElement logo = driver.findElement(By.xpath(locator));
+                results.add(logo != null);
+            } catch (NoSuchElementException e) {
+                results.add(false);
+            }
         }
-    }
-
-    public boolean checkLogoImagerMasterSecureCodeCard() {
-        try {
-            WebElement masterSecureCodeCardLogo = driver.findElement(By.xpath(LOGO_IMAGE_MASTER_CARD_SECURE_CODE_LOCATOR));
-            return masterSecureCodeCardLogo != null;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    public boolean checkLogoImagerBilCard() {
-        try {
-            WebElement logoImagerBilCardLogo = driver.findElement(By.xpath(LOGO_IMAGE_BEL_CARD_LOCATOR));
-            return logoImagerBilCardLogo != null;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    public boolean checkLogoImagerMasterCard() {
-        try {
-            WebElement logoImagerMasterCard = driver.findElement(By.xpath(LOGO_IMAGE_MASTER_CARD_LOCATOR));
-            return logoImagerMasterCard != null;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+        return results;
     }
 }
