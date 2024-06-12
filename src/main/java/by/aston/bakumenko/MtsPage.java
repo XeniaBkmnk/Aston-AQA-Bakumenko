@@ -55,7 +55,6 @@ public class MtsPage {
     }
 
     public void switchToPaymentIframe() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
         iframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(TEXT_PAY_DESCRIPTION_LOCATOR)));
         driver.switchTo().frame(iframe);
     }
