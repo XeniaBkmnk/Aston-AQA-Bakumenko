@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.List;
+
 import static org.testng.Assert.assertTrue;
 
 public class MtsTest extends BaseTest {
@@ -39,38 +41,11 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
-    public void testSearchLogoImagerVisaCard() {
+    public void testSearchLogoImagerCards() {
         step.openMainByMts();
-        assertTrue(mtsPage.checkLogoImagerVisaCard(), "Visa logo should be present in the online top-up section");
-    }
-
-    @Test
-    public void testSearchLogoImageMasterSecureСodeCard() {
-        step.openMainByMts();
-        assertTrue(mtsPage.checkLogoImagerMasterSecureCodeCard(), "Master Secure Сode card logo should be present in the online top-up section");
-    }
-
-    @Test
-    public void testCheckLogoImagerMasterCard() {
-        step.openMainByMts();
-        assertTrue(mtsPage.checkLogoImagerVisaCard(), "Master card logo should be present in the online top-up section");
-    }
-
-    @Test
-    public void testLogoImagerVisaVerifiedByCard() {
-        step.openMainByMts();
-        assertTrue(mtsPage.checkLogoImagerVisaVerifiedByCard(), "Visa Verified By logo should be present in the online top-up section");
-    }
-
-    @Test
-    public void testLogoImagerBilCard() {
-        step.openMainByMts();
-        assertTrue(mtsPage.checkLogoImagerBilCard(), "Bel Card logo should be present in the online top-up section");
-    }
-
-    @Test
-    public void testLogoImagerMasterCard() {
-        step.openMainByMts();
-        assertTrue(mtsPage.checkLogoImagerMasterCard(), "Master Card logo should be present in the online top-up section");
+        List<Boolean> logoResult = mtsPage.searchLogoImages();
+        for (Boolean result : logoResult) {
+            Assert.assertTrue("Logo should be present", result);
+        }
     }
 }
