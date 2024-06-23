@@ -2,6 +2,7 @@ package by.aston.bakumenko;
 
 import by.aston.bakumenko.pages.MtsPage;
 import by.aston.bakumenko.steps.StepPage;
+import jdk.jfr.Description;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -17,6 +18,7 @@ public class MtsTest extends BaseTest {
     StepPage stepPage = new StepPage();
 
     @BeforeEach
+    @Description("Подготовка перед выполнением каждого теста")
     public void setUp() {
         super.setUp();
         mtsPage = new MtsPage(driver);
@@ -50,6 +52,7 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка надписей в незаполненных полях сервиса 'Услуги связи'")
     public void testCheckCommunicationServiceDetails() {
         stepPage.openMainByMts();
         Assertions.assertEquals("Услуги связи", mtsPage.getNameListOfCommunicationServices());
@@ -59,6 +62,7 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка надписей в незаполненных полях сервиса 'Домашний интернет'")
     public void testCheckHomeInternetDetails() {
         stepPage.openMainByMts();
         mtsPage.clickButtonPopupMenu();
@@ -70,6 +74,7 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка надписей в незаполненных полях сервиса 'Рассрочка'")
     public void testCheckInstallmentPlan() {
         stepPage.openMainByMts();
         mtsPage.clickButtonPopupMenu();
@@ -81,6 +86,7 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Description("Проверка надписей в незаполненных полях сервиса 'Задолженность'")
     public void testCheckDebt() {
         stepPage.openMainByMts();
         mtsPage.clickButtonPopupMenu();
@@ -92,6 +98,7 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Description("Заполнение полей и проверка корректности отображения информации для 'Услуги связи'")
     public void testPaymentForMobileCommunicationServices() {
         stepPage.openMainByMts();
         mtsPage.sendInputPhoneNumber("297777777");
