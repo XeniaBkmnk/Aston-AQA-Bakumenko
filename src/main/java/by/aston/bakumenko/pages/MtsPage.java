@@ -15,50 +15,49 @@ import java.util.List;
 
 public class MtsPage {
     private WebDriver driver;
-    private WebElement iframe;
-    private final String TEXT_ONLINE_LINE_TOP_UP_NO_FREE_LOCATOR = "//*[@id='pay-section']//h2";
-    private final String ENTER_BUTTON_COOKIE_LOCATOR = "button#cookie-agree";
-    private final String LOGO_IMAGE_VISA_CARD_LOCATOR = "//*[@id='pay-section']//img[contains(@src, 'visa.svg')]";
-    private final String LOGO_IMAGE_VISA_VERIFIED_BY_CARD_LOCATOR = "//div[@id='pay-section']//ul/li[2]/img";
-    private final String LOGO_IMAGE_MASTER_CARD_LOCATOR = "//*[@id='pay-section']//ul/li[3]/img";
-    private final String LOGO_IMAGE_MASTER_CARD_SECURE_CODE_LOCATOR = "//div[@id='pay-section']//li[4]/img";
-    private final String LOGO_IMAGE_BEL_CARD_LOCATOR = "//*[@id='pay-section']//ul/li[5]/img";
-    private final String INPUT_PHONE_NUMBER_LOCATOR = "//*[@id='connection-phone']";
-    private final String INPUT_SUM_LOCATOR = "//*[@id='connection-sum']";
-    private final String BUTTON_CONTINUE_LOCATOR = "//*[@id='pay-connection']/button";
-    private final String TEXT_PAY_DESCRIPTION_LOCATOR = "//iframe[@class='bepaid-iframe']";
-    private final String PAYMENT_DESCRIPTION_LOCATOR = "span.pay-description__text";
-    private final String NAME_LIST_OF_COMMUNICATION_SERVICES = "//span[@class='select__now']";
-    private final String PHONE_NUMBER_IN_COMMUNICATION_SERVICES = "//input[@placeholder='Номер телефона']";
-    private final String SUM_IN_COMMUNICATION_SERVICES = "//*[contains(@placeholder, 'Сумма')]";
-    private final String EMAIL_IN_COMMUNICATION_SERVICES = "//*[@id='connection-email']";
-    private final String BUTTON_POPUP_MENU = "//*[@id='pay-section']//button";
-    private final String BUTTON_CHOOSE_HOME_INTERNET = "//*[@id='pay-section']//ul/li[2]/p";
-    private final String CHOOSE_HOME_INTERNET = "//*[@id='pay-section']//button//span";
-    private final String SUBSCRIBER_NUMBER_ON_HOME_INTERNET = "//*[@id='internet-phone']";
-    private final String SUM_ON_HOME_INTERNET = "//*[@id='internet-sum']";
-    private final String EMAIL_ON_HOME_INTERNET = "//*[@id='internet-email']";
-    private final String BUTTON_ON_INSTALLMENT_PLAN = "//*[@id='pay-section']//ul/li[3]";
-    private final String CHOOSE_INSTALLMENT_PLAN = "//*[@id='pay-section']//button//span[1]";
-    private final String SUBSCRIBER_NUMBER_ON_INSTALLMENT_PLAN = "//*[@id='internet-phone']";
-    private final String SUM_ON_INSTALLMENT_PLAN = "//*[@id='internet-sum']";
-    private final String EMAIL_ON_INSTALLMENT_PLAN = "//*[@id='internet-email']";
-    private final String BUTTON_DEBT = "//*[@id='pay-section']//ul/li[4]";
-    private final String CHOOSE_DEBT = "//*[@id=\"pay-section\"]//button//span[1]";
+    private final String textOnlineLineTopUpNoFree = "//*[@id='pay-section']//h2";
+    private final String enterButtonCookie = "button#cookie-agree";
+    private final String logoImageVisaCard = "//*[@id='pay-section']//img[contains(@src, 'visa.svg')]";
+    private final String logoImageVisaVerifiedByCard = "//div[@id='pay-section']//ul/li[2]/img";
+    private final String logoImageMasterCard = "//*[@id='pay-section']//ul/li[3]/img";
+    private final String logoImageMasterCardSecureCode = "//div[@id='pay-section']//li[4]/img";
+    private final String logoImageBelCardLocator = "//*[@id='pay-section']//ul/li[5]/img";
+    private final String inputPhoneNumber = "//*[@id='connection-phone']";
+    private final String inputSum = "//*[@id='connection-sum']";
+    private final String buttonContinue = "//*[@id='pay-connection']/button";
+    private final String textPayDescription = "//iframe[@class='bepaid-iframe']";
+    private final String paymentDescription = "span.pay-description__text";
+    private final String nameListOfCommunicationServices = "//span[@class='select__now']";
+    private final String phoneNumberInCommunicationServices = "//input[@placeholder='Номер телефона']";
+    private final String sumInCommunicationServices = "//*[contains(@placeholder, 'Сумма')]";
+    private final String emailInCommunicationServices = "//*[@id='connection-email']";
+    private final String buttonPopupMenu = "//*[@id='pay-section']//button";
+    private final String buttonChooseHomeInternet = "//*[@id='pay-section']//ul/li[2]/p";
+    private final String chooseHomeInternet = "//*[@id='pay-section']//button//span";
+    private final String subscriberNumberOnHomeInternet = "//*[@id='internet-phone']";
+    private final String sumOnHomeInternet = "//*[@id='internet-sum']";
+    private final String emailOnHomeInternet = "//*[@id='internet-email']";
+    private final String buttonOnInstallmentPlan = "//*[@id='pay-section']//ul/li[3]";
+    private final String chooseInstallmentPlan = "//*[@id='pay-section']//button//span[1]";
+    private final String subscriberNumberOnInstallmentPlan = "//*[@id='internet-phone']";
+    private final String sumOnInstallmentPlan = "//*[@id='internet-sum']";
+    private final String emailOnInstallmentPlan = "//*[@id='internet-email']";
+    private final String buttonDebt = "//*[@id='pay-section']//ul/li[4]";
+    private final String chooseDebt = "//*[@id=\"pay-section\"]//button//span[1]";
     private final String ACCOUNT_NUMBER_ON_DEBT = "//*[@id='score-arrears']";
-    private final String TOTAL_SUM_ELEMENT = "//app-payment-container/section/div/div/div/span[1]";
-    private final String PAY_DESCRIPTION = "//*[contains(text(), 'Оплата:')]";
-    private final String BUTTON_PAY = "//app-card-page/div/div[1]//button";
-    private final String CARD_NUMBER_LABEL = "//label[@class='ng-tns-c46-1 ng-star-inserted']";
-    private final String VALIDITY_LABEL = "//label[@class='ng-tns-c46-4 ng-star-inserted']";
-    private final String CVC_LABEL = "//label[@class='ng-tns-c46-5 ng-star-inserted']";
-    private final String HOLDER_NAME_LABEL = "//label[@class='ng-tns-c46-3 ng-star-inserted']";
-    private final String MASTER_CARD_ICON = "//img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']";
-    private final String VISA_ICON = "//img[@src='assets/images/payment-icons/card-types/visa-system.svg']";
-    private final String BELKART_ICON = "//img[@src='assets/images/payment-icons/card-types/belkart-system.svg']";
-    private final String MIR_ICON = "//img[@src='assets/images/payment-icons/card-types/mir-system-ru.svg']";
-    private final String BUTTON_GOOGLE_PAY = "//button[@aria-label='Google Pay']";
-    private final String BUTTON_YANDEX_PAY = "//button[@aria-label='Yandex Pay']";
+    private final String totalSumElement = "//app-payment-container/section/div/div/div/span[1]";
+    private final String payDescription = "//*[contains(text(), 'Оплата:')]";
+    private final String buttonPay = "//app-card-page/div/div[1]//button";
+    private final String cardNumberLabel = "//label[@class='ng-tns-c46-1 ng-star-inserted']";
+    private final String validityLabel = "//label[@class='ng-tns-c46-4 ng-star-inserted']";
+    private final String cvcLabel = "//label[@class='ng-tns-c46-5 ng-star-inserted']";
+    private final String holderNameLabel = "//label[@class='ng-tns-c46-3 ng-star-inserted']";
+    private final String masterCardIcon = "//img[@src='assets/images/payment-icons/card-types/mastercard-system.svg']";
+    private final String visaIcon = "//img[@src='assets/images/payment-icons/card-types/visa-system.svg']";
+    private final String belkartIcon = "//img[@src='assets/images/payment-icons/card-types/belkart-system.svg']";
+    private final String mirIcon = "//img[@src='assets/images/payment-icons/card-types/mir-system-ru.svg']";
+    private final String buttonGooglePay = "//button[@aria-label='Google Pay']";
+    private final String buttonYandexPay = "//button[@aria-label='Yandex Pay']";
 
     public MtsPage(WebDriver driver) {
         this.driver = driver;
@@ -74,50 +73,51 @@ public class MtsPage {
 
 
     public String getOnlineTopUpNoFeeTitle() {
-        return driver.findElement(By.xpath(TEXT_ONLINE_LINE_TOP_UP_NO_FREE_LOCATOR)).getText();
+        return driver.findElement(By.xpath(textOnlineLineTopUpNoFree)).getText();
     }
 
     public void clickButtonCookie() {
         try {
-            driver.findElement(By.cssSelector(ENTER_BUTTON_COOKIE_LOCATOR)).click();
+            driver.findElement(By.cssSelector(enterButtonCookie)).click();
         } catch (NoSuchElementException e) {
 
         }
     }
 
     public void sendInputPhoneNumber(String newNumber) {
-        driver.findElement(By.xpath(INPUT_PHONE_NUMBER_LOCATOR)).sendKeys(newNumber);
+        driver.findElement(By.xpath(inputPhoneNumber)).sendKeys(newNumber);
     }
 
     public void sendInputSum(String newSum) {
-        driver.findElement(By.xpath(INPUT_SUM_LOCATOR)).sendKeys(newSum);
+        driver.findElement(By.xpath(inputSum)).sendKeys(newSum);
     }
 
     public void clickButtonContinue() {
-        driver.findElement(By.xpath(BUTTON_CONTINUE_LOCATOR)).click();
+        driver.findElement(By.xpath(buttonContinue)).click();
     }
 
     public void switchToPaymentIframe() {
         WebDriverWait webDriverWait;
+        WebElement iframe;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        iframe = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(TEXT_PAY_DESCRIPTION_LOCATOR)));
+        iframe = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(textPayDescription)));
         driver.switchTo().frame(iframe);
     }
 
     public String getDropdownText() {
         WebDriverWait webDriverWait;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement dropdown = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(PAYMENT_DESCRIPTION_LOCATOR)));
+        WebElement dropdown = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(paymentDescription)));
         return dropdown.getText();
     }
 
     public List<Boolean> searchLogoImages() {
         List<String> locators = new ArrayList<>();
-        locators.add(LOGO_IMAGE_VISA_CARD_LOCATOR);
-        locators.add(LOGO_IMAGE_VISA_VERIFIED_BY_CARD_LOCATOR);
-        locators.add(LOGO_IMAGE_MASTER_CARD_SECURE_CODE_LOCATOR);
-        locators.add(LOGO_IMAGE_BEL_CARD_LOCATOR);
-        locators.add(LOGO_IMAGE_MASTER_CARD_LOCATOR);
+        locators.add(logoImageVisaCard);
+        locators.add(logoImageVisaVerifiedByCard);
+        locators.add(logoImageMasterCardSecureCode);
+        locators.add(logoImageBelCardLocator);
+        locators.add(logoImageMasterCard);
 
         List<Boolean> results = new ArrayList<>();
         for (String locator : locators) {
@@ -132,71 +132,71 @@ public class MtsPage {
     }
 
     public String getPhoneNumberInCommunicationServices() {
-        return driver.findElement(By.xpath(PHONE_NUMBER_IN_COMMUNICATION_SERVICES)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(phoneNumberInCommunicationServices)).getAttribute("placeholder");
     }
 
     public String getNameListOfCommunicationServices() {
-        return driver.findElement(By.xpath(NAME_LIST_OF_COMMUNICATION_SERVICES)).getText();
+        return driver.findElement(By.xpath(nameListOfCommunicationServices)).getText();
     }
 
     public String getSumInCommunicationServices() {
-        return driver.findElement(By.xpath(SUM_IN_COMMUNICATION_SERVICES)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(sumInCommunicationServices)).getAttribute("placeholder");
     }
 
     public String getEmailInCommunicationServices() {
-        return driver.findElement(By.xpath(EMAIL_IN_COMMUNICATION_SERVICES)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(emailInCommunicationServices)).getAttribute("placeholder");
     }
 
     public void clickButtonPopupMenu() {
-        driver.findElement(By.xpath(BUTTON_POPUP_MENU)).click();
+        driver.findElement(By.xpath(buttonPopupMenu)).click();
     }
 
     public void clickHomeInternet() {
-        driver.findElement(By.xpath(BUTTON_CHOOSE_HOME_INTERNET)).click();
+        driver.findElement(By.xpath(buttonChooseHomeInternet)).click();
     }
 
     public String getTextHomeInternet() {
-        return driver.findElement(By.xpath(CHOOSE_HOME_INTERNET)).getText();
+        return driver.findElement(By.xpath(chooseHomeInternet)).getText();
     }
 
     public String getSubscriberNumber() {
-        return driver.findElement(By.xpath(SUBSCRIBER_NUMBER_ON_HOME_INTERNET)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(subscriberNumberOnHomeInternet)).getAttribute("placeholder");
     }
 
     public String getSumOnHomeInternet() {
-        return driver.findElement(By.xpath(SUM_ON_HOME_INTERNET)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(sumOnHomeInternet)).getAttribute("placeholder");
     }
 
     public String getEmailOnHomeInternet() {
-        return driver.findElement(By.xpath(EMAIL_ON_HOME_INTERNET)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(emailOnHomeInternet)).getAttribute("placeholder");
     }
 
     public void clickInstallmentPlan() {
-        driver.findElement(By.xpath(BUTTON_ON_INSTALLMENT_PLAN)).click();
+        driver.findElement(By.xpath(buttonOnInstallmentPlan)).click();
     }
 
     public String getTextInstallmentPlan() {
-        return driver.findElement(By.xpath(CHOOSE_INSTALLMENT_PLAN)).getText();
+        return driver.findElement(By.xpath(chooseInstallmentPlan)).getText();
     }
 
     public String getSubscriberNumberInInstallmentPlan() {
-        return driver.findElement(By.xpath(SUBSCRIBER_NUMBER_ON_INSTALLMENT_PLAN)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(subscriberNumberOnInstallmentPlan)).getAttribute("placeholder");
     }
 
     public String getSumInInstallmentPlan() {
-        return driver.findElement(By.xpath(SUM_ON_INSTALLMENT_PLAN)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(sumOnInstallmentPlan)).getAttribute("placeholder");
     }
 
     public String getEmailInInstallmentPlan() {
-        return driver.findElement(By.xpath(EMAIL_ON_INSTALLMENT_PLAN)).getAttribute("placeholder");
+        return driver.findElement(By.xpath(emailOnInstallmentPlan)).getAttribute("placeholder");
     }
 
     public void clickButtonDebt() {
-        driver.findElement(By.xpath(BUTTON_DEBT)).click();
+        driver.findElement(By.xpath(buttonDebt)).click();
     }
 
     public String getTextDebt() {
-        return driver.findElement(By.xpath(CHOOSE_DEBT)).getText();
+        return driver.findElement(By.xpath(chooseDebt)).getText();
     }
 
     public String getTextAccountNumber() {
@@ -206,61 +206,61 @@ public class MtsPage {
     public WebElement getTotalSumElement() {
         WebDriverWait webDriverWait;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement totalSumElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(TOTAL_SUM_ELEMENT)));
+        WebElement totalSumElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(this.totalSumElement)));
         return totalSumElement;
     }
 
     public WebElement getPayDescription() {
         WebDriverWait webDriverWait;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement payDescription = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(PAY_DESCRIPTION)));
+        WebElement payDescription = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(this.payDescription)));
         return payDescription;
     }
 
     public WebElement getPayButton() {
         WebDriverWait webDriverWait;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement payButton = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(BUTTON_PAY)));
+        WebElement payButton = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(buttonPay)));
         return payButton;
     }
 
     public WebElement getCardNumberLabel() {
-        return driver.findElement(By.xpath(CARD_NUMBER_LABEL));
+        return driver.findElement(By.xpath(cardNumberLabel));
     }
 
     public WebElement getValidityLabel() {
-        return driver.findElement(By.xpath(VALIDITY_LABEL));
+        return driver.findElement(By.xpath(validityLabel));
     }
 
     public WebElement getCvcLabel() {
-        return driver.findElement(By.xpath(CVC_LABEL));
+        return driver.findElement(By.xpath(cvcLabel));
     }
 
     public WebElement getHolderNameLabel() {
-        return driver.findElement(By.xpath(HOLDER_NAME_LABEL));
+        return driver.findElement(By.xpath(holderNameLabel));
     }
 
     public WebElement getMastercardIcon() {
-        return driver.findElement(By.xpath(MASTER_CARD_ICON));
+        return driver.findElement(By.xpath(masterCardIcon));
     }
 
     public WebElement getVisaIcon() {
-        return driver.findElement(By.xpath(VISA_ICON));
+        return driver.findElement(By.xpath(visaIcon));
     }
 
     public WebElement getBelkartIcon() {
-        return driver.findElement(By.xpath(BELKART_ICON));
+        return driver.findElement(By.xpath(belkartIcon));
     }
 
     public WebElement getMirIcon() {
-        return driver.findElement(By.xpath(MIR_ICON));
+        return driver.findElement(By.xpath(mirIcon));
     }
 
     public WebElement getGooglePayButton() {
-        return driver.findElement(By.xpath(BUTTON_GOOGLE_PAY));
+        return driver.findElement(By.xpath(buttonGooglePay));
     }
 
     public WebElement getYandexPayButton() {
-        return driver.findElement(By.xpath(BUTTON_YANDEX_PAY));
+        return driver.findElement(By.xpath(buttonYandexPay));
     }
 }
