@@ -1,4 +1,4 @@
-package by.aston.bakumenko;
+package by.aston.bakumenko.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
