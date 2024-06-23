@@ -15,6 +15,7 @@ import java.util.List;
 
 public class MtsPage {
     private WebDriver driver;
+    private WebDriverWait webDriverWait;
     private final String textOnlineLineTopUpNoFree = "//*[@id='pay-section']//h2";
     private final String enterButtonCookie = "button#cookie-agree";
     private final String logoImageVisaCard = "//*[@id='pay-section']//img[contains(@src, 'visa.svg')]";
@@ -38,7 +39,7 @@ public class MtsPage {
     private final String sumOnHomeInternet = "//*[@id='internet-sum']";
     private final String emailOnHomeInternet = "//*[@id='internet-email']";
     private final String buttonOnInstallmentPlan = "//*[@id='pay-section']//ul/li[3]";
-    private final String chooseInstallmentPlan = "//*[@id='pay-section']//button//span[1]";
+    private final String chooseInstallmentPlan = "//*[@id='pay-section']//ul/li[3]/p";
     private final String subscriberNumberOnInstallmentPlan = "//*[@id='internet-phone']";
     private final String sumOnInstallmentPlan = "//*[@id='internet-sum']";
     private final String emailOnInstallmentPlan = "//*[@id='internet-email']";
@@ -61,10 +62,16 @@ public class MtsPage {
 
     public MtsPage(WebDriver driver) {
         this.driver = driver;
+        initWebDriverWait();
     }
 
     public MtsPage() {
         this.driver = WebDriverSingleton.getDriver();
+        initWebDriverWait();
+    }
+
+    private void initWebDriverWait() {
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public void openMainPage() {
@@ -97,16 +104,11 @@ public class MtsPage {
     }
 
     public void switchToPaymentIframe() {
-        WebDriverWait webDriverWait;
-        WebElement iframe;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        iframe = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(textPayDescription)));
+        WebElement iframe = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(textPayDescription)));
         driver.switchTo().frame(iframe);
     }
 
     public String getDropdownText() {
-        WebDriverWait webDriverWait;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement dropdown = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(paymentDescription)));
         return dropdown.getText();
     }
@@ -204,22 +206,16 @@ public class MtsPage {
     }
 
     public WebElement getTotalSumElement() {
-        WebDriverWait webDriverWait;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement totalSumElement = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(this.totalSumElement)));
         return totalSumElement;
     }
 
     public WebElement getPayDescription() {
-        WebDriverWait webDriverWait;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement payDescription = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(this.payDescription)));
         return payDescription;
     }
 
     public WebElement getPayButton() {
-        WebDriverWait webDriverWait;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement payButton = webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(buttonPay)));
         return payButton;
     }
