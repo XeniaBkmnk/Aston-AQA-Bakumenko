@@ -1,4 +1,4 @@
-package by.aston.bakumenko;
+package by.aston.bakumenko.ui;
 
 import by.aston.bakumenko.pages.MtsPage;
 import by.aston.bakumenko.steps.StepPage;
