@@ -2,22 +2,19 @@ package by.aston.bakumenko;
 
 import by.aston.bakumenko.pages.MtsPage;
 import by.aston.bakumenko.steps.StepPage;
+import io.qameta.allure.*;
 import jdk.jfr.Description;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class MtsTest extends BaseTest {
     MtsPage mtsPage = new MtsPage();
-    private static final Logger LOGGER = LogManager.getLogger();
     StepPage stepPage = new StepPage();
 
-    @BeforeEach
+    @BeforeMethod
     @Description("Подготовка перед выполнением каждого теста")
     public void setUp() {
         super.setUp();
@@ -25,14 +22,16 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Story("Проверка блока")
     public void testSearchBlock() {
         stepPage.openMainByMts();
-        LOGGER.info("Expected Message: " + "Онлайн пополнение\n" + "без комиссии");
-        Assertions.assertEquals("Онлайн пополнение\n" +
+        Assert.assertEquals("Онлайн пополнение\n" +
                 "без комиссии", mtsPage.getOnlineTopUpNoFeeTitle());
     }
 
     @Test
+    @Story("Проверка ввода номера телефона, суммы оплаты и проверра кнопки продолжить")
+    @Severity(SeverityLevel.CRITICAL)
     public void testInputPhoneNumber() {
         stepPage.openMainByMts();
         mtsPage.sendInputPhoneNumber("297777777");
@@ -43,83 +42,97 @@ public class MtsTest extends BaseTest {
     }
 
     @Test
+    @Story("Проверка логотипов карт на странице")
     public void testSearchLogoImagerCards() {
         stepPage.openMainByMts();
         List<Boolean> logoResult = mtsPage.searchLogoImages();
         for (Boolean result : logoResult) {
-            Assert.assertTrue("Logo should be present", result);
+            Assert.assertTrue(result, "Logo should be present");
         }
     }
 
     @Test
     @Description("Проверка надписей в незаполненных полях сервиса 'Услуги связи'")
+    @Feature("Услуги связи")
+    @Story("Проверка деталей")
+    @Severity(SeverityLevel.CRITICAL)
     public void testCheckCommunicationServiceDetails() {
         stepPage.openMainByMts();
-        Assertions.assertEquals("Услуги связи", mtsPage.getNameListOfCommunicationServices());
-        Assertions.assertEquals("Номер телефона", mtsPage.getPhoneNumberInCommunicationServices());
-        Assertions.assertEquals("Сумма", mtsPage.getSumInCommunicationServices());
-        Assertions.assertEquals("E-mail для отправки чека", mtsPage.getEmailInCommunicationServices());
+        Assert.assertEquals("Услуги связи", mtsPage.getNameListOfCommunicationServices());
+        Assert.assertEquals("Номер телефона", mtsPage.getPhoneNumberInCommunicationServices());
+        Assert.assertEquals("Сумма", mtsPage.getSumInCommunicationServices());
+        Assert.assertEquals("E-mail для отправки чека", mtsPage.getEmailInCommunicationServices());
     }
 
     @Test
     @Description("Проверка надписей в незаполненных полях сервиса 'Домашний интернет'")
+    @Feature("Домашний интернет")
+    @Story("Проверка деталей")
+    @Severity(SeverityLevel.CRITICAL)
     public void testCheckHomeInternetDetails() {
         stepPage.openMainByMts();
         mtsPage.clickButtonPopupMenu();
         mtsPage.clickHomeInternet();
-        Assertions.assertEquals("Домашний интернет", mtsPage.getTextHomeInternet());
-        Assertions.assertEquals("Номер абонента", mtsPage.getSubscriberNumber());
-        Assertions.assertEquals("Сумма", mtsPage.getSumOnHomeInternet());
-        Assertions.assertEquals("E-mail для отправки чека", mtsPage.getEmailOnHomeInternet());
+        Assert.assertEquals("Домашний интернет", mtsPage.getTextHomeInternet());
+        Assert.assertEquals("Номер абонента", mtsPage.getSubscriberNumber());
+        Assert.assertEquals("Сумма", mtsPage.getSumOnHomeInternet());
+        Assert.assertEquals("E-mail для отправки чека", mtsPage.getEmailOnHomeInternet());
     }
 
     @Test
     @Description("Проверка надписей в незаполненных полях сервиса 'Рассрочка'")
+    @Story("Проверка деталей 'Рассрочка'")
+    @Severity(SeverityLevel.CRITICAL)
     public void testCheckInstallmentPlan() {
         stepPage.openMainByMts();
         mtsPage.clickButtonPopupMenu();
         mtsPage.clickInstallmentPlan();
-        Assertions.assertEquals("Рассрочка", mtsPage.getTextInstallmentPlan());
-        Assertions.assertEquals("Номер абонента", mtsPage.getSubscriberNumberInInstallmentPlan());
-        Assertions.assertEquals("Сумма", mtsPage.getSumInInstallmentPlan());
-        Assertions.assertEquals("E-mail для отправки чека", mtsPage.getEmailInInstallmentPlan());
+        Assert.assertEquals("Рассрочка", mtsPage.getTextInstallmentPlan());
+        Assert.assertEquals("Номер абонента", mtsPage.getSubscriberNumberInInstallmentPlan());
+        Assert.assertEquals("Сумма", mtsPage.getSumInInstallmentPlan());
+        Assert.assertEquals("E-mail для отправки чека", mtsPage.getEmailInInstallmentPlan());
     }
 
     @Test
     @Description("Проверка надписей в незаполненных полях сервиса 'Задолженность'")
+    @Story("Проверка деталей 'Задолженность'")
+    @Severity(SeverityLevel.CRITICAL)
     public void testCheckDebt() {
         stepPage.openMainByMts();
         mtsPage.clickButtonPopupMenu();
         mtsPage.clickButtonDebt();
-        Assertions.assertEquals("Задолженность", mtsPage.getTextDebt());
-        Assertions.assertEquals("Номер счета на 2073", mtsPage.getTextAccountNumber());
-        Assertions.assertEquals("Сумма", mtsPage.getSumInInstallmentPlan());
-        Assertions.assertEquals("E-mail для отправки чека", mtsPage.getEmailOnHomeInternet());
+        Assert.assertEquals("Задолженность", mtsPage.getTextDebt());
+        Assert.assertEquals("Номер счета на 2073", mtsPage.getTextAccountNumber());
+        Assert.assertEquals("Сумма", mtsPage.getSumInInstallmentPlan());
+        Assert.assertEquals("E-mail для отправки чека", mtsPage.getEmailOnHomeInternet());
     }
 
     @Test
     @Description("Заполнение полей и проверка корректности отображения информации для 'Услуги связи'")
+    @Feature("Услуги связи")
+    @Story("Проверка оплаты")
+    @Severity(SeverityLevel.CRITICAL)
     public void testPaymentForMobileCommunicationServices() {
         stepPage.openMainByMts();
         mtsPage.sendInputPhoneNumber("297777777");
         mtsPage.sendInputSum("77");
         mtsPage.clickButtonContinue();
         mtsPage.switchToPaymentIframe();
-        Assert.assertTrue("20.00 BYN", mtsPage.getTotalSumElement().isDisplayed());
-        Assert.assertTrue("Оплата: Услуги связи Номер:375297777777", mtsPage.getPayDescription().isDisplayed());
-        Assert.assertTrue(" Оплатить  20.00 BYN ", mtsPage.getPayButton().isDisplayed());
+        Assert.assertTrue(mtsPage.getTotalSumElement().isDisplayed(), "20.00 BYN");
+        Assert.assertTrue(mtsPage.getPayDescription().isDisplayed(), "Оплата: Услуги связи Номер:375297777777");
+        Assert.assertTrue(mtsPage.getPayButton().isDisplayed(), " Оплатить  20.00 BYN ");
 
         Assert.assertEquals(mtsPage.getCardNumberLabel().getText(), "Номер карты");
         Assert.assertEquals(mtsPage.getValidityLabel().getText(), "Срок действия");
         Assert.assertEquals(mtsPage.getCvcLabel().getText(), "CVC");
         Assert.assertEquals(mtsPage.getHolderNameLabel().getText(), "Имя держателя (как на карте)");
 
-        Assert.assertTrue("mastercard", mtsPage.getMastercardIcon().isDisplayed());
-        Assert.assertTrue("visa", mtsPage.getVisaIcon().isDisplayed());
-        Assert.assertTrue("belkart", mtsPage.getBelkartIcon().isDisplayed());
-        Assert.assertTrue("mir", mtsPage.getMirIcon().isDisplayed());
+        Assert.assertTrue(mtsPage.getMastercardIcon().isDisplayed(), "mastercard");
+        Assert.assertTrue(mtsPage.getVisaIcon().isDisplayed(), "visa");
+        Assert.assertTrue(mtsPage.getBelkartIcon().isDisplayed(), "belkart");
+        Assert.assertTrue(mtsPage.getMirIcon().isDisplayed(), "mir");
 
-        Assert.assertTrue("Google Pay", mtsPage.getGooglePayButton().isDisplayed());
-        Assert.assertTrue("Yandex Pay", mtsPage.getYandexPayButton().isDisplayed());
+        Assert.assertTrue(mtsPage.getGooglePayButton().isDisplayed(), "Google Pay");
+        Assert.assertTrue(mtsPage.getYandexPayButton().isDisplayed(), "Yandex Pay");
     }
 }
