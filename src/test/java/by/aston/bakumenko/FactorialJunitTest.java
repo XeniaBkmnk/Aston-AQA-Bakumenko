@@ -1,10 +1,10 @@
 package by.aston.bakumenko;
 
 import by.aston.bakumenko.seventhTask.Factorial;
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.testng.Assert.assertThrows;
 
 public class FactorialJunitTest {
     @Test
